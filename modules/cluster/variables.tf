@@ -66,6 +66,12 @@ variable "enable_repository_storage" {
   default     = true
 }
 
+variable "uniform_bucket_level_access" {
+  description = "Boolean for setting this option when creating the necessary storage buckets"
+  type        = bool
+  default     = false
+}
+
 variable "force_destroy" {
   description = "Flag to determine whether storage buckets get forcefully destroyed"
   type        = bool
