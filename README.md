@@ -150,6 +150,7 @@ The following two paragraphs provide the full list of configuration and output v
 | version\_stream\_url | The URL for the version stream to use when booting Jenkins X. See https://jenkins-x.io/docs/concepts/version-stream/ | `string` | `"https://github.com/jenkins-x/jenkins-x-versions.git"` | no |
 | webhook | Jenkins X webhook handler for git provider | `string` | `"lighthouse"` | no |
 | zone | Zone in which to create the cluster (deprecated, use cluster\_location instead) | `string` | `""` | no |
+| uniform\_bucket\_level\_access | Boolean for setting this option when creating the necessary storage buckets | `bool` | `false` | no |
 
 #### Outputs
 

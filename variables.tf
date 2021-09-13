@@ -105,6 +105,12 @@ variable "create_ui_sa" {
   default     = true
 }
 
+variable "uniform_bucket_level_access" {
+  description = "Boolean for setting this option when creating the necessary storage buckets"
+  type        = bool
+  default     = false
+}
+
 // ----------------------------------------------------------------------------
 // Vault
 // ----------------------------------------------------------------------------
