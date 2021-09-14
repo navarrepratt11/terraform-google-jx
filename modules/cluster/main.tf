@@ -36,6 +36,7 @@ resource "google_container_cluster" "jx_cluster" {
 
   private_cluster_config {
     enable_private_endpoint = var.enable_private_endpoint
+    enable_private_nodes    = var.enable_private_nodes
     master_ipv4_cidr_block  = var.master_ipv4_cidr_block
   }
 

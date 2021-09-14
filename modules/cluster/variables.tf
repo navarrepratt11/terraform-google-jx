@@ -63,6 +63,12 @@ variable "enable_private_endpoint" {
   default     = false
 }
 
+variable "enable_private_nodes" {
+  description = "Flag to enable private nodes"
+  type        = bool
+  default     = true
+}
+
 // node config
 variable "node_tags" {
   description = "List of tags to apply to all nodes"
