@@ -38,9 +38,38 @@ variable "cluster_id" {
   type        = string
 }
 
+variable "master_ipv4_cidr_block" {
+  description = "Control plane IP range"
+  type        = string
+}
+
+variable "cluster_ipv4_cidr_block" {
+  description = "Pod secondary CIDR range"
+  type        = string
+}
+
+variable "services_ipv4_cidr_block" {
+  description = "Services secondary CIDR range"
+  type        = string
+}
+
 // ----------------------------------------------------------------------------
 // Optional Variables
 // ----------------------------------------------------------------------------
+// networking
+variable "enable_private_endpoint" {
+  description = "Flag to enable private endpoints"
+  type        = bool
+  default     = false
+}
+
+// node config
+variable "node_tags" {
+  description = "List of tags to apply to all nodes"
+  type        = list(string)
+  default     = ["interconnect-gke"]
+}
+
 // storage
 variable "bucket_location" {
   description = "Bucket location for storage"

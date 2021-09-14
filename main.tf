@@ -155,6 +155,9 @@ module "cluster" {
   cluster_location            = local.location
   cluster_network             = var.cluster_network
   cluster_subnetwork          = var.cluster_subnetwork
+  master_ipv4_cidr_block      = var.master_ipv4_cidr_block
+  cluster_ipv4_cidr_block     = var.cluster_ipv4_cidr_block
+  services_ipv4_cidr_block    = var.services_ipv4_cidr_block
   cluster_id                  = random_id.random.hex
   bucket_location             = var.bucket_location
   uniform_bucket_level_access = var.uniform_bucket_level_access

@@ -39,6 +39,21 @@ variable "cluster_subnetwork" {
   default     = ""
 }
 
+variable "master_ipv4_cidr_block" {
+  description = "Control plane IP range"
+  type        = string
+}
+
+variable "cluster_ipv4_cidr_block" {
+  description = "Pod secondary CIDR range"
+  type        = string
+}
+
+variable "services_ipv4_cidr_block" {
+  description = "Services secondary CIDR range"
+  type        = string
+}
+
 variable "bucket_location" {
   description = "Bucket location for storage"
   type        = string

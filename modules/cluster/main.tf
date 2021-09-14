@@ -21,12 +21,23 @@ resource "google_container_cluster" "jx_cluster" {
   location                = var.cluster_location
   network                 = var.cluster_network
   subnetwork              = var.cluster_subnetwork
+  networking_mode         = "VPC_NATIVE"
   enable_kubernetes_alpha = var.enable_kubernetes_alpha
   enable_legacy_abac      = var.enable_legacy_abac
   enable_shielded_nodes   = var.enable_shielded_nodes
   initial_node_count      = var.min_node_count
   logging_service         = var.logging_service
   monitoring_service      = var.monitoring_service
+
+  ip_allocation_policy {
+    cluster_ipv4_cidr_block  = var.cluster_ipv4_cidr_block
+    services_ipv4_cidr_block = var.services_ipv4_cidr_block
+  }
+
+  private_cluster_config {
+    enable_private_endpoint = var.enable_private_endpoint
+    master_ipv4_cidr_block  = var.master_ipv4_cidr_block
+  }
 
   // should disable master auth
   master_auth {
@@ -81,6 +92,8 @@ resource "google_container_cluster" "jx_cluster" {
     workload_metadata_config {
       node_metadata = "GKE_METADATA_SERVER"
     }
+
+    tags = var.node_tags
 
   }
 }
