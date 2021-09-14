@@ -40,17 +40,17 @@ variable "cluster_subnetwork" {
 }
 
 variable "master_ipv4_cidr_block" {
-  description = "Control plane IP range"
+  description = "Control plane CIDR range block"
   type        = string
 }
 
-variable "cluster_ipv4_cidr_block" {
-  description = "Pod secondary CIDR range"
+variable "cluster_secondary_range_name" {
+  description = "Pod secondary CIDR range name"
   type        = string
 }
 
-variable "services_ipv4_cidr_block" {
-  description = "Services secondary CIDR range"
+variable "services_secondary_range_name" {
+  description = "Services secondary CIDR range name"
   type        = string
 }
 

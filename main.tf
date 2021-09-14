@@ -150,19 +150,19 @@ resource "google_project_service" "container_api" {
 module "cluster" {
   source = "./modules/cluster"
 
-  gcp_project                 = var.gcp_project
-  cluster_name                = local.cluster_name
-  cluster_location            = local.location
-  cluster_network             = var.cluster_network
-  cluster_subnetwork          = var.cluster_subnetwork
-  master_ipv4_cidr_block      = var.master_ipv4_cidr_block
-  cluster_ipv4_cidr_block     = var.cluster_ipv4_cidr_block
-  services_ipv4_cidr_block    = var.services_ipv4_cidr_block
-  cluster_id                  = random_id.random.hex
-  bucket_location             = var.bucket_location
-  uniform_bucket_level_access = var.uniform_bucket_level_access
-  jenkins_x_namespace         = var.jenkins_x_namespace
-  force_destroy               = var.force_destroy
+  gcp_project                   = var.gcp_project
+  cluster_name                  = local.cluster_name
+  cluster_location              = local.location
+  cluster_network               = var.cluster_network
+  cluster_subnetwork            = var.cluster_subnetwork
+  master_ipv4_cidr_block        = var.master_ipv4_cidr_block
+  cluster_secondary_range_name  = var.cluster_secondary_range_name
+  services_secondary_range_name = var.services_secondary_range_name
+  cluster_id                    = random_id.random.hex
+  bucket_location               = var.bucket_location
+  uniform_bucket_level_access   = var.uniform_bucket_level_access
+  jenkins_x_namespace           = var.jenkins_x_namespace
+  force_destroy                 = var.force_destroy
 
   node_machine_type = var.node_machine_type
   node_disk_size    = var.node_disk_size

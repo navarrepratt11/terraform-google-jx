@@ -160,10 +160,10 @@ The following two paragraphs provide the full list of configuration and output v
 | <a name="input_apex_domain_gcp_project"></a> [apex\_domain\_gcp\_project](#input\_apex\_domain\_gcp\_project) | The GCP project the apex domain is managed by, used to write recordsets for a subdomain if set.  Defaults to current project. | `string` | `""` | no |
 | <a name="input_apex_domain_integration_enabled"></a> [apex\_domain\_integration\_enabled](#input\_apex\_domain\_integration\_enabled) | Flag that when set attempts to create delegation records in apex domain to point to domain created by this module | `bool` | `true` | no |
 | <a name="input_bucket_location"></a> [bucket\_location](#input\_bucket\_location) | Bucket location for storage | `string` | `"US"` | no |
-| <a name="input_cluster_ipv4_cidr_block"></a> [cluster\_ipv4\_cidr\_block](#input\_cluster\_ipv4\_cidr\_block) | Pod secondary CIDR range | `string` | n/a | yes |
 | <a name="input_cluster_location"></a> [cluster\_location](#input\_cluster\_location) | The location (region or zone) in which the cluster master will be created. If you specify a zone (such as us-central1-a), the cluster will be a zonal cluster with a single cluster master. If you specify a region (such as us-west1), the cluster will be a regional cluster with multiple masters spread across zones in the region | `string` | `"us-central1-a"` | no |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | Name of the Kubernetes cluster to create | `string` | `""` | no |
 | <a name="input_cluster_network"></a> [cluster\_network](#input\_cluster\_network) | The name of the network (VPC) to which the cluster is connected | `string` | `"default"` | no |
+| <a name="input_cluster_secondary_range_name"></a> [cluster\_secondary\_range\_name](#input\_cluster\_secondary\_range\_name) | Pod secondary CIDR range name | `string` | n/a | yes |
 | <a name="input_cluster_subnetwork"></a> [cluster\_subnetwork](#input\_cluster\_subnetwork) | The name of the subnetwork to which the cluster is connected. Leave blank when using the 'default' vpc to generate a subnet for your cluster | `string` | `""` | no |
 | <a name="input_create_ui_sa"></a> [create\_ui\_sa](#input\_create\_ui\_sa) | Whether the service accounts for the UI should be created | `bool` | `true` | no |
 | <a name="input_dev_env_approvers"></a> [dev\_env\_approvers](#input\_dev\_env\_approvers) | List of git users allowed to approve pull request for dev enviornment repository | `list(string)` | `[]` | no |
@@ -180,7 +180,7 @@ The following two paragraphs provide the full list of configuration and output v
 | <a name="input_jx_git_url"></a> [jx\_git\_url](#input\_jx\_git\_url) | URL for the Jenins X cluster git repository | `string` | `""` | no |
 | <a name="input_kuberhealthy"></a> [kuberhealthy](#input\_kuberhealthy) | Enables Kuberhealthy helm installation | `bool` | `true` | no |
 | <a name="input_lets_encrypt_production"></a> [lets\_encrypt\_production](#input\_lets\_encrypt\_production) | Flag to determine wether or not to use the Let's Encrypt production server. | `bool` | `true` | no |
-| <a name="input_master_ipv4_cidr_block"></a> [master\_ipv4\_cidr\_block](#input\_master\_ipv4\_cidr\_block) | Control plane IP range | `string` | n/a | yes |
+| <a name="input_master_ipv4_cidr_block"></a> [master\_ipv4\_cidr\_block](#input\_master\_ipv4\_cidr\_block) | Control plane CIDR range block | `string` | n/a | yes |
 | <a name="input_max_node_count"></a> [max\_node\_count](#input\_max\_node\_count) | Maximum number of cluster nodes | `number` | `5` | no |
 | <a name="input_min_node_count"></a> [min\_node\_count](#input\_min\_node\_count) | Minimum number of cluster nodes | `number` | `3` | no |
 | <a name="input_node_disk_size"></a> [node\_disk\_size](#input\_node\_disk\_size) | Node disk size in GB | `string` | `"100"` | no |
@@ -191,7 +191,7 @@ The following two paragraphs provide the full list of configuration and output v
 | <a name="input_parent_domain_gcp_project"></a> [parent\_domain\_gcp\_project](#input\_parent\_domain\_gcp\_project) | **Deprecated** Please use apex\_domain\_gcp\_project variable instead. | `string` | `""` | no |
 | <a name="input_release_channel"></a> [release\_channel](#input\_release\_channel) | The GKE release channel to subscribe to.  See https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels | `string` | `"REGULAR"` | no |
 | <a name="input_resource_labels"></a> [resource\_labels](#input\_resource\_labels) | Set of labels to be applied to the cluster | `map` | `{}` | no |
-| <a name="input_services_ipv4_cidr_block"></a> [services\_ipv4\_cidr\_block](#input\_services\_ipv4\_cidr\_block) | Services secondary CIDR range | `string` | n/a | yes |
+| <a name="input_services_secondary_range_name"></a> [services\_secondary\_range\_name](#input\_services\_secondary\_range\_name) | Services secondary CIDR range name | `string` | n/a | yes |
 | <a name="input_subdomain"></a> [subdomain](#input\_subdomain) | Optional sub domain for the installation | `string` | `""` | no |
 | <a name="input_tls_email"></a> [tls\_email](#input\_tls\_email) | Email used by Let's Encrypt. Required for TLS when apex\_domain is specified | `string` | `""` | no |
 | <a name="input_uniform_bucket_level_access"></a> [uniform\_bucket\_level\_access](#input\_uniform\_bucket\_level\_access) | Boolean for setting this option when creating the necessary storage buckets | `bool` | `false` | no |
@@ -222,7 +222,6 @@ The following two paragraphs provide the full list of configuration and output v
 | <a name="output_tekton_sa_email"></a> [tekton\_sa\_email](#output\_tekton\_sa\_email) | The Tekton service account email address, useful to provide further IAM bindings |
 | <a name="output_tekton_sa_name"></a> [tekton\_sa\_name](#output\_tekton\_sa\_name) | The Tekton service account name, useful to provide further IAM bindings |
 | <a name="output_vault_bucket_url"></a> [vault\_bucket\_url](#output\_vault\_bucket\_url) | The URL to the bucket for secret storage |
-
 ### Running `jx boot`
 
 A terraform output (_jx\_requirements_) is available after applying this Terraform module.
